@@ -1,10 +1,17 @@
 # project
 import random
+print("!!!! AINULT INGLISEKEELSED SÕNAD!!!!")
+käike=10
 def genereeri_sõna(infile):
     random_sõna= random.choice(open(infile).read().split("\n"))
     return random_sõna
-def main():
+def peamine():
     infile="sõnad.txt"
     print(genereeri_sõna(infile))
-main()
+
+def küsimus():
+    täht=input("Mis tähte Sa pakud?:")
+küsimus()
+    
+
 
