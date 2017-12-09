@@ -41,8 +41,3 @@ while käike>0:
         print("Vale")
     if käike==0:
         print("Sa kaotasid")
-
-            
-        
-
-    
