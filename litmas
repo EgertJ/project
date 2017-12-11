@@ -8,36 +8,49 @@ print("Tere tulemast",nimi,"aeg mängida poomist!")
 def genereeri_sõna(infile):
     random_sõna= random.choice(open(infile).read().split("\n"))
     return random_sõna
+def poomine():
+    infile="sõnad.txt"
+    sõna=genereeri_sõna(infile)
+    print(sõna)
+    print("Sõnas on",len(sõna),"sõna")
+    käike=10
+    vastuseid=""
 
-infile="sõnad.txt"
-sõna=genereeri_sõna(infile)
-print(sõna)
-print("Sõnas on",len(sõna),"sõna")
-käike=10
-vastuseid=""
 
-
-while käike>0:
+    while käike>0:
     
-    valesti=0
+        valesti=0
     
 
-    for char in sõna:
-        if char in vastuseid:
-                print(char)
+        for char in sõna:
+            if char in vastuseid:
+                    print(char)
             
-        else:
-            print("_")
-            valesti += 1
+            else:
+                print("_")
+                valesti += 1
             
-    if valesti==0:
-        print("Sa võitsid!")
-        break
+        if valesti==0:
+            print("Sa võitsid!")
+            break
         
-    täht=input("Sisestage täht:")
-    vastuseid += täht
-    if täht not in sõna:
-        käike -= 1
-        print("Vale")
-    if käike==0:
-        print("Sa kaotasid")
+        täht=input("Sisestage täht:")
+        vastuseid += täht
+        if täht not in sõna:
+            käike -= 1
+            print("Vale")
+        if käike==0:
+            print("Sa kaotasid")
+poomine()
+
+#Uuesti mängimine
+while True:
+    vastus=input("Tahad sa uuesti mängida?")
+    if vastus=="jah":
+        poomine()
+    elif vastus=="ei":
+        break
+    else:
+        print("Ei mõista sinu vastust")
+
+
