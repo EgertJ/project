@@ -1,0 +1,41 @@
+# project
+import random
+
+def peamine():
+    print("Mängime kivi, paber,käärid!")
+    number=kasutaja()
+    num=arvuti()
+    lahendus(num,number)
+def arvuti():
+    num= random.randint(1,4)
+    if num == 1:
+        print("Arvuti valis kivi")
+    elif num==2:
+        print("Arvuti valis paberi")
+    elif num==3:
+        print("Arvuti valis käärid")
+    return num
+def kasutaja():
+    kasutaja_arvamus=input("Palun valige, kas kivi, paber või käärid, kirjutades täpselt nii, nagu ette nähtud:")
+    if kas_õige_valik(kasutaja_arvamus):
+        if kasutaja_arvamus== "kivi":
+            number = 1
+        elif kasutaja_arvamus=="paber":
+            number = 2
+        elif kasutaja_arvamus== "käärid":
+            number = 3
+        else:
+            print("Vali uuesti, sisestasid midagi valesti")
+            kasutaja()
+        return number
+def kas_õige_valik(kasutaja_arvamus):
+     return kasutaja_arvamus.lower() in ('rock', 'paper', 'scissors')
+def lahendus(num,number):
+    vahe = num-number
+    if vahe== 0:
+        print("VIIK")
+    elif vahe %3==1:
+        print("Sa kaotasid :'(")
+    elif vahe %3 ==2:
+        print("Sa võitsid, oled parim!")
+peamine()
