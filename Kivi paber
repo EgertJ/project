@@ -1,41 +1,34 @@
-# project
-import random
+from random import randint
 
-def peamine():
-    print("Mängime kivi, paber,käärid!")
-    number=kasutaja()
-    num=arvuti()
-    lahendus(num,number)
-def arvuti():
-    num= random.randint(1,4)
-    if num == 1:
-        print("Arvuti valis kivi")
-    elif num==2:
-        print("Arvuti valis paberi")
-    elif num==3:
-        print("Arvuti valis käärid")
-    return num
-def kasutaja():
-    kasutaja_arvamus=input("Palun valige, kas kivi, paber või käärid, kirjutades täpselt nii, nagu ette nähtud:")
-    if kas_õige_valik(kasutaja_arvamus):
-        if kasutaja_arvamus== "kivi":
-            number = 1
-        elif kasutaja_arvamus=="paber":
-            number = 2
-        elif kasutaja_arvamus== "käärid":
-            number = 3
-        else:
-            print("Vali uuesti, sisestasid midagi valesti")
-            kasutaja()
-        return number
-def kas_õige_valik(kasutaja_arvamus):
-     return kasutaja_arvamus.lower() in ('rock', 'paper', 'scissors')
-def lahendus(num,number):
-    vahe = num-number
-    if vahe== 0:
-        print("VIIK")
-    elif vahe %3==1:
-        print("Sa kaotasid :'(")
-    elif vahe %3 ==2:
-        print("Sa võitsid, oled parim!")
-peamine()
+mängija=input("kivi(k),paber(p),käärid(kä):")
+
+print(mängija, "vs", end=" ")
+
+arvuti_valik=randint(1,3)
+
+if arvuti_valik==1:
+    arvuti="k"
+elif arvuti_valik==2:
+    arvuti="p"
+elif arvuti_valik==3:
+    arvuti="kä"
+
+print(arvuti)
+
+if mängija==arvuti:
+    print("VIIK")
+elif mängija=="k" and arvuti=="kä":
+    print("SA VÕITSID!")
+elif mängija=="k" and arvuti=="p":
+    print("SA KAOTASID!")
+elif mängija=="p" and arvuti=="k":
+    print("SA KAOTASID!")
+elif mängija=="p" and arvuti=="kä":
+    print("SA KAOTASID!")
+elif mängija=="kä" and arvuti=="k":
+    print("SA KAOTASID!")
+elif mängija=="kä" and arvuti=="p":
+    print("SA VÕITSID!")
+
+
+
