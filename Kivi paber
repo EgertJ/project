@@ -1,34 +1,64 @@
-from random import randint
+import tkinter
+from tkinter import messagebox
+import random
 
-mängija=input("kivi(k),paber(p),käärid(kä):")
+päis=tkinter.Tk()
+päis.title("Kivi|Paber|Käärid")
 
-print(mängija, "vs", end=" ")
+kasutaja_skoor=0
+arvuti_skoor=0
 
-arvuti_valik=randint(1,3)
+def Kivi():
+    global kasutaja_skoor, arvuti_skoor
 
-if arvuti_valik==1:
-    arvuti="k"
-elif arvuti_valik==2:
-    arvuti="p"
-elif arvuti_valik==3:
-    arvuti="kä"
+    arvuti= random.randint(1,3)
+    if arvuti==3:
+        arvuti="Käärid"
+        kasutaja_skoor+=1
+        messagebox.showinfo("PALJU ÕNNE!","SA VÕITSID!\n"+"Sinu valik:Kivi"+"\nArvuti Valik: "+arvuti+"\nSinu skoor: " +str(kasutaja_skoor)+"\nArvuti skoor:"+str(arvuti_skoor))
+    elif arvuti==1:
+        arvuti = "Kivi"
+        messagebox.showinfo("Sama mis arvutil!", "VIIK\n"+"Sinu valik:Kivi"+"\nArvuti valik: "+arvuti+"\nSinu skoor: "+str(kasutaja_skoor)+"\nArvuti skoor: "+str(arvuti_skoor))
+    else:
+        arvuti="Paber"
+        arvuti_skoor+=1
+        messagebox.showinfo("Ossa pagan!", "SA KAOTASID\n"+"Sinu valik:Kivi"+"\nArvuti valik: "+arvuti+"\nSinu skoor: "+str(kasutaja_skoor)+"\nArvuti skoor: "+str(arvuti_skoor))
+def Paber():
+    global kasutaja_skoor, arvuti_skoor
 
-print(arvuti)
+    arvuti=random.randint(1,3)
 
-if mängija==arvuti:
-    print("VIIK")
-elif mängija=="k" and arvuti=="kä":
-    print("SA VÕITSID!")
-elif mängija=="k" and arvuti=="p":
-    print("SA KAOTASID!")
-elif mängija=="p" and arvuti=="k":
-    print("SA KAOTASID!")
-elif mängija=="p" and arvuti=="kä":
-    print("SA KAOTASID!")
-elif mängija=="kä" and arvuti=="k":
-    print("SA KAOTASID!")
-elif mängija=="kä" and arvuti=="p":
-    print("SA VÕITSID!")
+    if arvuti==1:
+        arvuti="Kivi"
+        kasutaja_skoor+=1
+        messagebox.showinfo("PALJU ÕNNE!","SA VÕITSID!\n"+"Sinu valik:Paber"+"\nArvuti Valik: "+arvuti+"\nSinu skoor: " +str(kasutaja_skoor)+"\nArvuti skoor:"+str(arvuti_skoor))
+    elif arvuti==2:
+        arvuti="Paber"
+        messagebox.showinfo("Sama mis arvutil!","VIIK!\n"+"Sinu valik:Paber"+"\nArvuti Valik: "+arvuti+"\nSinu skoor: " +str(kasutaja_skoor)+"\nArvuti skoor:"+str(arvuti_skoor))
+    else:
+        arvuti="Käärid"
+        arvuti_skoor+=1
+        messagebox.showinfo("Ossa pagan!","SA KAOTASID!\n"+"Sinu valik:Paber"+"\nArvuti Valik: "+arvuti+"\nSinu skoor: " +str(kasutaja_skoor)+"\nArvuti skoor:"+str(arvuti_skoor))
+def Käärid():
+    global kasutaja_skoor, arvuti_skoor
+    arvuti=random.randint(1,3)
+    if arvuti == 2:
+        arvuti="Paber"
+        kasutaja_skoor+=1
+        messagebox.showinfo("PALJU ÕNNE!","SA VÕITSID!\n"+"Sinu valik:Käärid"+"\nArvuti Valik: "+arvuti+"\nSinu skoor: " +str(kasutaja_skoor)+"\nArvuti skoor:"+str(arvuti_skoor))
+    elif arvuti==3:
+        arvuti="Käärid"
+        messagebox.showinfo("Sama mis arvutil!","VIIK!\n"+"Sinu valik:Käärid"+"\nArvuti Valik: "+arvuti+"\nSinu skoor: " +str(kasutaja_skoor)+"\nArvuti skoor:"+str(arvuti_skoor))
+    else:
+        arvuti="Kivi"
+        arvuti_skoor+=1
+        messagebox.showinfo("Ossa pagan!","SA KAOTASID!\n"+"Sinu valik:Käärid"+"\nArvuti Valik: "+arvuti+"\nSinu skoor: " +str(kasutaja_skoor)+"\nArvuti skoor:"+str(arvuti_skoor))
+B1=tkinter.Button(päis, text = "Kivi",bg='red',height="10",width="20", command = Kivi)
+B2=tkinter.Button(päis, text = "Paber",bg='green',height="10",width="20", command = Paber)
+B3=tkinter.Button(päis, text = "Käärid",bg='blue',height="10",width="20", command = Käärid)
+B1.pack(side='left')
+B2.pack(side='left')
+B3.pack(side='left')
 
-
+päis.mainloop()
 
